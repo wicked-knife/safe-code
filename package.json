@@ -9,16 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "esbuild": "^0.19.4",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
     "sablejs": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.22.20",
     "autoprefixer": "latest",
-    "postcss": "latest",
-    "tailwindcss": "latest",
     "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint-config-next": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest"
   }
 }
