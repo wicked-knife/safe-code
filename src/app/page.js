@@ -1,4 +1,25 @@
+'use client'
+import {useRef} from 'react'
+
 export default function Home() {
+
+  const sourceCodeInputRef = useRef('')
+
+  const handleSourceCodeChange = (event) => {
+    sourceCodeInputRef.current = event.target.value
+  }
+
+  const handleSubmit = () => {
+    console.log(sourceCodeInputRef.current)
+
+    fetch('/api/compile', {
+      method: 'POST',
+      body: JSON.stringify({
+        code: sourceCodeInputRef.current
+      })
+    })
+  }
+  
   return (
     <main className="flex min-h-screen flex-col pt-24 pb-24 pr-40 pl-40">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -7,9 +28,12 @@ export default function Home() {
         </p>
       </div>
       <div className="mt-10">
-        <div className="mb-5">Paste your code here: </div>
+        <div className="mb-5">Paste your Javascript code here: </div>
         <div className="mb-5">
-          <textarea rows="10" cols="30" className="text-black w-full" />
+          <textarea rows="10" cols="30" className="text-black w-full" onChange={handleSourceCodeChange}/>
+          <div className="flex items-center justify-end mt-2">
+            <div className="ml-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer" onClick={handleSubmit}>Submit</div>
+          </div>
         </div>
         <div className="mb-5 flex items-center justify-start">
           <div>Or upload your Javascript file here: </div>
